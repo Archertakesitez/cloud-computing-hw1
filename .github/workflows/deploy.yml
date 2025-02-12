@@ -21,4 +21,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy frontend to S3
-        run: aws s3 sync ./frontend s3://cloud-hw1-starter --delete
+        run: aws s3 sync ./Frontend s3://cloud-hw1-starter --delete
