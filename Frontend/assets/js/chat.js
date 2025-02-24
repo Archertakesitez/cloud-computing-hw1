@@ -1,4 +1,5 @@
 var checkout = {};
+var session_id;
 
 $(document).ready(function() {
   var $messages = $('.messages-content'),
@@ -8,7 +9,20 @@ $(document).ready(function() {
   $(window).load(function() {
     $messages.mCustomScrollbar();
     insertResponseMessage('Hi there, I\'m your personal Concierge. How can I help?');
+
+    session_id = generate_key();
   });
+
+
+  // from https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
+  var generate_key = function() {
+      let rand = "";
+      while (rand.length < 2) {
+          rand = Math.random().toString(36).slice(2);
+      }
+      return rand;
+  };
+
 
   function updateScrollbar() {
     $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
@@ -33,7 +47,8 @@ $(document).ready(function() {
         unstructured: {
           text: message
         }
-      }]
+      }], 
+      session_id: session_id
     }, {});
   }
 
