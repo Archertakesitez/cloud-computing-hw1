@@ -15,8 +15,7 @@ $(document).ready(function() {
 
 
   // from https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
-// Update the generate_key function in your chat.js
-  var generate_key = function() {
+var generate_key = function() {
     // Check if we already have a persistent ID in localStorage
     let persistentId = localStorage.getItem('dining_concierge_user_id');
     
@@ -29,9 +28,9 @@ $(document).ready(function() {
         persistentId = rand;
         localStorage.setItem('dining_concierge_user_id', persistentId);
     }
-  
-  // Return the persistent ID
-  return persistentId;
+    
+    // Return the persistent ID
+    return persistentId;
 };
 
 
