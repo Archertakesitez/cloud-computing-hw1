@@ -15,13 +15,24 @@ $(document).ready(function() {
 
 
   // from https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
+// Update the generate_key function in your chat.js
   var generate_key = function() {
-      let rand = "";
-      while (rand.length < 2) {
-          rand = Math.random().toString(36).slice(2);
-      }
-      return rand;
-  };
+    // Check if we already have a persistent ID in localStorage
+    let persistentId = localStorage.getItem('dining_concierge_user_id');
+    
+    // If not, create a new one and store it
+    if (!persistentId) {
+        let rand = "";
+        while (rand.length < 10) {
+            rand = Math.random().toString(36).slice(2);
+        }
+        persistentId = rand;
+        localStorage.setItem('dining_concierge_user_id', persistentId);
+    }
+  
+  // Return the persistent ID
+  return persistentId;
+};
 
 
   function updateScrollbar() {
